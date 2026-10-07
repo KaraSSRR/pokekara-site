@@ -37,9 +37,10 @@ Use a server rather than opening `index.html` directly from disk, so that direct
 │   │   ├── tokens.css         Design tokens: colours, type scale, spacing, motion
 │   │   ├── base.css           Reset, typography, focus styles, layout primitives
 │   │   ├── components.css     Header, navigation, buttons, status pills, footer
-│   │   ├── pages.css          Homepage sections and /claude/ page layout
-│   │   └── responsive.css     Breakpoints: large desktop → 320px
-│   ├── js/main.js             Progressive enhancement: mobile menu, reveal, scroll-spy
+│   │   ├── home.css           Homepage sections, incl. the interactive phone concept (with their breakpoints)
+│   │   ├── claude.css         /claude/ case study layout (with its breakpoints)
+│   │   └── responsive.css     Shared breakpoints: header, navigation, footer
+│   ├── js/main.js             Progressive enhancement: mobile menu, phone tabs, journey strip, reveal, scroll-spy
 │   └── img/og-image.png       Social sharing image (1200×630)
 ├── docs/
 │   └── claude-development-case-study.md   Long-form source copy for /claude/
@@ -53,18 +54,21 @@ Use a server rather than opening `index.html` directly from disk, so that direct
 
 - **Copy.** Page text lives directly in `index.html` and `claude/index.html`. Edit the longer case-study text in `docs/claude-development-case-study.md` first, then update `claude/index.html` to match.
 - **Truthfulness.** Keep the product status accurate ("in active development", "planned for Apple App Store and Google Play"). Do not add metrics, ratings, testimonials, partner logos or launch dates unless they are real and approved.
-- **Visuals.** The phone panel in the hero is an original HTML/CSS illustration and is labelled as a concept, not in-game footage. Do not add club crests, league or federation marks, or real player photos. Real VITALE screenshots can replace the concept panel once they are approved for public use; label them accurately.
-- **Styling.** Change colours, type and spacing through `assets/css/tokens.css`. Section styles live in `pages.css`; breakpoint overrides live in `responsive.css`.
+- **Homepage story.** The homepage sells VITALE first: hero → product thesis → career journey → mobile experience → built differently → technology & production pipeline (simulation → Unity client ← Blender production) → Built with Claude → players → investors → roadmap → studio. Keep that order product-led.
+- **Hero phone.** The phone in the hero is an original HTML/CSS interface concept with the six confirmed VITALE tabs (Home, Training, Business, Media, Career, World). Each tab is a `section.scr` panel in `index.html`; the tab bar is an ARIA tablist driven by `main.js` (click, arrow keys, Home/End). Without JavaScript the Home screen shows. All clubs, players and numbers on it are fictional, and it is labelled "Representative interface concept · in development".
+- **Visuals.** Phone and UI illustrations are concepts, not in-game footage. Do not add club crests, league or federation marks, or real player photos. Real VITALE screenshots can replace the concept panel once they are approved for public use; label them accurately.
+- **Styling.** Change colours, type and spacing through `assets/css/tokens.css`. Homepage section styles live in `home.css`, case-study styles in `claude.css`, and shared header/nav/footer breakpoints in `responsive.css`.
+- **Fonts.** Barlow (text) and Barlow Condensed (display) load from Google Fonts with `display=swap`, and system fonts are the fallback. Before public launch, consider self-hosting the WOFF2 files under `assets/fonts/`. That removes the third-party request, which also helps with GDPR.
 - **JavaScript.** The site must work with JavaScript disabled. `main.js` only adds the mobile menu, reveal-on-scroll, header state and scroll-spy. Content hidden by the reveal effect is only hidden when the `js` class is present on `<html>`, and is always shown under `prefers-reduced-motion: reduce`.
 - **Paths.** Use relative paths (`assets/...` on the homepage, `../assets/...` in `claude/`) so the site works both on the custom domain and in local preview.
-- **New pages.** Create a folder with an `index.html`, copy the `<head>` and header/footer from `claude/index.html`, and add the URL to `sitemap.xml`.
+- **New pages.** Create a folder with an `index.html`, copy the `<head>` and header/footer from `claude/index.html` (nav links there use `../#section`), and add the URL to `sitemap.xml`.
 - **Accessibility.** Keep one `<h1>` per page, keep heading levels in order, keep visible focus styles, and check contrast when changing colours.
 
 ## Deployment model
 
 The site is designed for **GitHub Pages**, served from the repository root of the `main` branch with the custom domain `pokekara.online`.
 
-Work happens on feature branches. `site-v1-claude-startup-landing` holds v1 and has **not** been merged into `main` or published.
+Work happens on feature branches. `site-v1-claude-startup-landing` holds v1. `site-v2-product-led-redesign` holds the product-led redesign. Neither has been merged into `main` or published.
 
 ### Enabling GitHub Pages (when approved)
 
@@ -98,6 +102,8 @@ Before you merge changes, check:
 
 - both pages at 320px, 375px, 768px, 1024px, 1440px and 1920px wide, with no horizontal scrolling;
 - the mobile menu opens and closes, closes with Escape, and keeps keyboard focus inside while it is open;
+- every hero phone tab switches the screen, and arrow keys move between tabs;
+- the career journey strip scrolls with its arrow buttons and with the keyboard;
 - every navigation link, in-page anchor and `mailto:` link works;
 - there are no errors in the browser console;
 - the site still works with JavaScript disabled and with reduced motion enabled;
