@@ -1,0 +1,76 @@
+/* Design tokens — Pokekara Studio (premium dark / football-tech) */
+:root {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --c-bg: #07090c;
+  --c-bg-raised: #0c1015;
+  --c-surface: #11161d;
+  --c-surface-2: #161c25;
+  --c-surface-3: #1d2530;
+
+  /* Lines */
+  --c-line: rgba(160, 190, 230, 0.10);
+  --c-line-strong: rgba(160, 190, 230, 0.20);
+
+  /* Text */
+  --c-text: #eef3f9;
+  --c-text-2: #b4c0cf;
+  --c-text-3: #8492a5;
+
+  /* Accents */
+  --c-accent: #5aa9ff;
+  --c-accent-strong: #7dbbff;
+  --c-accent-soft: rgba(90, 169, 255, 0.12);
+  --c-teal: #3fd1bf;
+  --c-teal-soft: rgba(63, 209, 191, 0.10);
+  --c-pitch: #1b3a2c;
+  --c-warn: #f2c26b;
+
+  /* Type */
+  --font-sans: "Inter", "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Inter Tight", "Segoe UI Variable Display", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: clamp(1.0625rem, 0.98rem + 0.35vw, 1.1875rem);
+  --fs-lg: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-xl: clamp(1.5rem, 1.25rem + 1.1vw, 2.125rem);
+  --fs-2xl: clamp(2rem, 1.5rem + 2.4vw, 3.5rem);
+  --fs-3xl: clamp(2.375rem, 1.6rem + 3.8vw, 5.25rem);
+
+  --lh-tight: 1.04;
+  --lh-snug: 1.2;
+  --lh-body: 1.6;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-section: clamp(4.5rem, 3rem + 7vw, 9rem);
+
+  /* Layout */
+  --container: 1200px;
+  --container-narrow: 760px;
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --header-h: 64px;
+
+  /* Shape & depth */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow-1: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 20px 40px -24px rgba(0, 0, 0, 0.7);
+  --glow-accent: 0 0 0 1px rgba(90, 169, 255, 0.35), 0 10px 30px -10px rgba(90, 169, 255, 0.45);
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 220ms;
+  --dur-slow: 700ms;
+}
