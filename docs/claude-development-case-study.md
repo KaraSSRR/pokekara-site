@@ -37,7 +37,23 @@ For a small team, the hardest part is rarely writing a single feature. It is hol
 
 This lets a small independent studio take on engineering problems that would normally need more engineering capacity.
 
-## 2. The workflow
+## 2. Where Claude fits in VITALE
+
+VITALE is built in three layers:
+
+1. **Simulation systems** decide what happens: MatchEngine, WorldEngine, career systems, competitions, transfers and the data pipeline.
+2. **The Unity mobile client** shows it: a portrait, one-thumb interface and selected 3D scenes.
+3. **Blender production** gives it a face: characters and high-impact career moments, prepared as mobile-ready assets for the Unity client.
+
+Claude works on the engineering side of that picture:
+
+- **Simulation systems** are where it does most of its work: architecture, implementation, tests and review.
+- **Data and tooling** covers pipelines, validation rules, diagnostics and internal tools.
+- **QA** covers regression analysis and deterministic checks.
+
+Game design, creative direction, scope and acceptance stay with people.
+
+## 3. The workflow
 
 Every meaningful change follows the same path:
 
@@ -56,7 +72,7 @@ Humans own the first and last steps. Claude takes part in the steps between them
 | | Technical documentation |
 | | Decomposing large engineering objectives |
 
-## 3. Architecture reasoning
+## 4. Architecture reasoning
 
 Before implementation starts, Claude analyses the relevant parts of the repository and answers questions such as:
 
@@ -67,7 +83,7 @@ Before implementation starts, Claude analyses the relevant parts of the reposito
 
 The output is a concrete map of the change, not just a plan to start typing. Claude may propose options and trade-offs, but a human makes the decision. We record architecture decisions so that the next change builds on an explicit foundation rather than on someone's memory.
 
-## 4. Implementation
+## 5. Implementation
 
 We break large objectives into **bounded tasks**. Each task has a brief:
 
@@ -81,7 +97,7 @@ ACCEPTANCE   Review complete · human sign-off
 
 Claude implements against the brief, not against an open-ended request. Bounded changes are easier to review, test and revert, and they keep Claude focused on the part of the system the task is about.
 
-## 5. Test generation
+## 6. Test generation
 
 We write tests alongside the code, and treat them as part of the change. Claude helps with:
 
@@ -91,7 +107,7 @@ We write tests alongside the code, and treat them as part of the change. Claude 
 
 Because the systems interact, many of the most valuable tests check outcomes across systems. For example, a test can confirm that a change to fatigue does not quietly break selection logic further down the chain.
 
-## 6. Regression analysis
+## 7. Regression analysis
 
 When a change touches shared systems, Claude helps us work out what could regress and why. It reads test output and diagnostic logs that are too long to inspect comfortably by hand. It then groups failures by their likely cause and points to where behaviour diverged.
 
@@ -103,7 +119,7 @@ A green test run is not the goal. The goal is to understand whether each changed
 
 A human makes that judgement.
 
-## 7. Independent review
+## 8. Independent review
 
 Implementation and review are separate steps. A review pass:
 
@@ -113,7 +129,7 @@ Implementation and review are separate steps. A review pass:
 
 We verify findings before acting on them, and a human decides which findings matter.
 
-## 8. Deterministic validation
+## 9. Deterministic validation
 
 VITALE's MatchEngine is a headless simulation designed to be deterministic: the same inputs and the same seed produce the same result. That property makes the simulation testable and keeps it balanceable over the long term.
 
@@ -124,11 +140,11 @@ We use determinism as a safety net:
 
 Claude helps write these checks and helps interpret any differences in the results.
 
-## 9. Data tooling
+## 10. Data tooling
 
 A football world depends on a lot of structured data: player identity and roster data, physical profiles, clubs and competitions. Claude helps us build and maintain the pipelines that shape, validate and load this data. It also helps write the validation rules that catch inconsistencies before they reach the simulation.
 
-## 10. Multi-agent development workflows
+## 11. Multi-agent development workflows
 
 We split larger objectives across focused Claude sessions, each with its own role:
 
@@ -139,7 +155,7 @@ We split larger objectives across focused Claude sessions, each with its own rol
 
 Separate roles keep each context small, and they mean the agent that reviews a change is never the one that wrote it. A human coordinates the work, sets the scope of each task and integrates the results.
 
-## 11. Human acceptance
+## 12. Human acceptance
 
 Nothing ships because a model said it was done. Every change ends with a human decision on three questions:
 
@@ -149,7 +165,7 @@ Nothing ships because a model said it was done. Every change ends with a human d
 
 Product direction, design taste and final acceptance stay with humans.
 
-## 12. Future Claude and API use
+## 13. Future Claude and API use
 
 Today we use Claude inside our engineering process. VITALE does not currently ship any end-user AI features. Areas we are exploring for the future:
 

@@ -24,10 +24,13 @@
   <meta name="twitter:image" content="https://pokekara.online/assets/img/og-image.png">
 
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,700&family=Barlow:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="../assets/css/tokens.css">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/components.css">
-  <link rel="stylesheet" href="../assets/css/pages.css">
+  <link rel="stylesheet" href="../assets/css/claude.css">
   <link rel="stylesheet" href="../assets/css/responsive.css">
   <script>document.documentElement.classList.add("js");</script>
   <script src="../assets/js/main.js" defer></script>
@@ -35,29 +38,40 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header is-scrolled" data-header>
+  <header class="site-header" data-header>
     <div class="container site-header__inner">
-      <a class="brand" href="../" aria-label="Pokekara Studio — home">
-        <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0e131a"/><circle cx="32" cy="32" r="19" fill="none" stroke="#5aa9ff" stroke-width="3"/><path d="M24 20h10a8 8 0 0 1 0 16h-6v8" fill="none" stroke="#eef3f9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="brand__name">Pokekara <span>Studio</span></span>
+      <a class="brand" href="../" aria-label="VITALE: Football Career by Pokekara Studio, home">
+        <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 13v19c0 14-10 24-24 28C18 56 8 46 8 32V13z" fill="#0e131a" stroke="#5aa9ff" stroke-width="3"/><path d="M21 21l11 24 11-24" fill="none" stroke="#eef3f9" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="brand__text">
+          <span class="brand__name">VITALE</span>
+          <span class="brand__by">by Pokekara Studio</span>
+        </span>
       </a>
 
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
-        <span class="nav-toggle__bars" aria-hidden="true"></span>
-        <span class="visually-hidden">Menu</span>
-      </button>
-
       <nav class="site-nav" id="site-nav" aria-label="Primary" data-nav>
-        <ul role="list">
-          <li><a href="../">Home</a></li>
-          <li><a href="../#vitale">VITALE</a></li>
-          <li><a href="./" aria-current="page">Built with Claude</a></li>
-          <li><a href="../#players">For Players</a></li>
-          <li><a href="../#investors">For Investors</a></li>
-          <li><a href="../#roadmap">Roadmap</a></li>
-          <li><a class="site-nav__cta" href="../#contact">Contact</a></li>
-        </ul>
+        <ol class="site-nav__list" role="list">
+          <li><a href="../#vitale"><span class="site-nav__num" aria-hidden="true">01</span>VITALE</a></li>
+          <li><a href="../#experience"><span class="site-nav__num" aria-hidden="true">02</span>Experience</a></li>
+          <li><a href="../#technology"><span class="site-nav__num" aria-hidden="true">03</span>Technology</a></li>
+          <li><a href="./" aria-current="page"><span class="site-nav__num" aria-hidden="true">04</span>Built with Claude</a></li>
+          <li><a href="../#studio"><span class="site-nav__num" aria-hidden="true">05</span>Studio</a></li>
+          <li><a href="../#roadmap"><span class="site-nav__num" aria-hidden="true">06</span>Roadmap</a></li>
+          <li class="site-nav__contact"><a href="../#contact"><span class="site-nav__num" aria-hidden="true">07</span>Contact</a></li>
+        </ol>
+        <div class="site-nav__meta">
+          <p><span class="pulse" aria-hidden="true"></span>In active development</p>
+          <p>Planned for the App Store &amp; Google Play</p>
+          <p><a href="mailto:hello@pokekara.online">hello@pokekara.online</a></p>
+        </div>
       </nav>
+
+      <div class="site-header__actions">
+        <a class="header-cta" href="../#contact">Contact</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+          <span class="nav-toggle__bars" aria-hidden="true"></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -73,7 +87,7 @@
           </nav>
           <p class="eyebrow">Engineering case study</p>
           <h1 class="display" id="cs-title">How Pokekara Builds VITALE with Claude</h1>
-          <p class="lead">Claude is part of how VITALE is engineered. It works as a force multiplier inside a human-controlled development process — helping a small independent studio reason about, build, test and review a football world made of interconnected simulation systems.</p>
+          <p class="lead">VITALE: Football Career is a mobile football career RPG built on deeply connected simulation systems. Claude is part of how we engineer it: a force multiplier inside a human-controlled process that helps a small independent studio reason about, build, test and review a football world.</p>
           <ul class="cs-meta" role="list">
             <li>AI-assisted engineering</li>
             <li>Human-controlled product</li>
@@ -88,6 +102,7 @@
         <p class="toc__title" id="toc-title">On this page</p>
         <ol>
           <li><a href="#why">Why Claude</a></li>
+          <li><a href="#where">Where Claude fits</a></li>
           <li><a href="#workflow">The workflow</a></li>
           <li><a href="#architecture">Architecture reasoning</a></li>
           <li><a href="#implementation">Implementation</a></li>
@@ -123,8 +138,19 @@
           </div>
         </section>
 
+        <section id="where" aria-labelledby="where-title">
+          <h2 id="where-title"><span class="num">02</span>Where Claude fits in VITALE</h2>
+          <p>VITALE is built in three layers: headless simulation systems that decide what happens, a Unity mobile client that shows it, and a Blender production pipeline for characters and high-impact career moments. Claude works on the engineering side of that picture.</p>
+          <div class="mini-grid">
+            <div class="mini"><h3>Simulation systems</h3><p>MatchEngine, WorldEngine, career systems, competitions and transfers: the main place Claude helps with architecture, implementation, tests and review.</p></div>
+            <div class="mini"><h3>Data &amp; tooling</h3><p>Data pipelines, validation rules, diagnostics and the internal tools that keep a large world consistent.</p></div>
+            <div class="mini"><h3>QA</h3><p>Regression analysis and deterministic checks across the systems above.</p></div>
+            <div class="mini"><h3>Product &amp; creative direction</h3><p>Game design, creative direction, scope and acceptance stay with people.</p></div>
+          </div>
+        </section>
+
         <section id="workflow" aria-labelledby="workflow-title">
-          <h2 id="workflow-title"><span class="num">02</span>The workflow</h2>
+          <h2 id="workflow-title"><span class="num">03</span>The workflow</h2>
           <p>Every meaningful change follows the same path. Claude participates in most stages; humans own the first and the last.</p>
           <ol class="flowline" role="list" aria-label="Development workflow">
             <li class="is-human">Product direction</li>
@@ -158,13 +184,13 @@
         </section>
 
         <section id="architecture" aria-labelledby="architecture-title">
-          <h2 id="architecture-title"><span class="num">03</span>Architecture reasoning</h2>
+          <h2 id="architecture-title"><span class="num">04</span>Architecture reasoning</h2>
           <p>Before implementation, we ask Claude to analyse the relevant parts of the repository: which systems are involved, where state lives, what depends on what, and which invariants must not break. This turns a vague objective into a concrete map of the change.</p>
           <p>Claude proposes options and trade-offs; a human chooses. Architectural decisions are made by people and written down, so the next change starts from an explicit foundation rather than from memory.</p>
         </section>
 
         <section id="implementation" aria-labelledby="implementation-title">
-          <h2 id="implementation-title"><span class="num">04</span>Implementation</h2>
+          <h2 id="implementation-title"><span class="num">05</span>Implementation</h2>
           <p>Large objectives are decomposed into bounded tasks. Each task has an explicit scope, constraints and acceptance criteria, and Claude implements against that brief — not against an open-ended request.</p>
           <pre class="term" aria-label="Structure of a typical task brief"><span class="c"># The shape of a typical task brief</span>
 OBJECTIVE    One bounded change, stated plainly
@@ -176,42 +202,42 @@ ACCEPTANCE   Review complete · <span class="ok">human sign-off</span></pre>
         </section>
 
         <section id="tests" aria-labelledby="tests-title">
-          <h2 id="tests-title"><span class="num">05</span>Test generation</h2>
+          <h2 id="tests-title"><span class="num">06</span>Test generation</h2>
           <p>Claude helps write automated tests alongside the code: unit tests for individual rules, scenario tests for multi-step simulation behaviour, and checks for edge cases a person might not think to try. Tests are treated as part of the change, not an afterthought.</p>
           <p>Because simulation systems interact, many of the most valuable tests describe outcomes across systems — for example, that a fatigue change does not silently break selection logic further down the chain.</p>
         </section>
 
         <section id="regression" aria-labelledby="regression-title">
-          <h2 id="regression-title"><span class="num">06</span>Regression analysis</h2>
+          <h2 id="regression-title"><span class="num">07</span>Regression analysis</h2>
           <p>When a change touches shared systems, Claude helps identify what could regress and why. It reads test output and diagnostic logs that are too long to inspect comfortably by hand, groups failures by likely cause, and points to where behaviour diverged.</p>
           <p>The goal is not just a green test run. It is understanding whether a changed result is a bug, an intended consequence, or a sign that a test needs to change — and that judgement stays with a human.</p>
         </section>
 
         <section id="review" aria-labelledby="review-title">
-          <h2 id="review-title"><span class="num">07</span>Independent review</h2>
+          <h2 id="review-title"><span class="num">08</span>Independent review</h2>
           <p>Implementation and review are kept separate. A review pass starts from a fresh context, reads the diff against the original brief, and is explicitly asked to challenge assumptions: missed edge cases, unintended side effects, scope creep, and places where the code does something other than what was asked.</p>
           <p>Findings are verified before they are acted on. A human decides which findings matter.</p>
         </section>
 
         <section id="determinism" aria-labelledby="determinism-title">
-          <h2 id="determinism-title"><span class="num">08</span>Deterministic validation</h2>
+          <h2 id="determinism-title"><span class="num">09</span>Deterministic validation</h2>
           <p>VITALE's MatchEngine is a headless simulation designed to be deterministic: given the same inputs and the same seed, it produces the same result. That property is what makes the simulation testable and balanceable over the long term.</p>
           <p>We use it as a safety net. Changes that should not affect outcomes can be checked for exactly that, and changes that should affect outcomes can be measured rather than eyeballed. Claude helps write these checks and interpret where results differ.</p>
         </section>
 
         <section id="data" aria-labelledby="data-title">
-          <h2 id="data-title"><span class="num">09</span>Data tooling</h2>
+          <h2 id="data-title"><span class="num">10</span>Data tooling</h2>
           <p>A football world needs a lot of structured data: player identity and roster data, physical profiles, clubs and competitions. Claude helps build and maintain the pipelines that shape, validate and load that data, and helps write the validation rules that catch inconsistencies before they reach the simulation.</p>
         </section>
 
         <section id="multi-agent" aria-labelledby="multi-agent-title">
-          <h2 id="multi-agent-title"><span class="num">10</span>Multi-agent development workflows</h2>
+          <h2 id="multi-agent-title"><span class="num">11</span>Multi-agent development workflows</h2>
           <p>For larger objectives, work is split across focused Claude sessions with different jobs — exploring the codebase, implementing a bounded task, running verification, or reviewing someone else's change. Separating roles keeps each context small and means the agent reviewing a change is not the one that wrote it.</p>
           <p>A human coordinates the work, sets the scope of each task and integrates the results.</p>
         </section>
 
         <section id="acceptance" aria-labelledby="acceptance-title">
-          <h2 id="acceptance-title"><span class="num">11</span>Human acceptance</h2>
+          <h2 id="acceptance-title"><span class="num">12</span>Human acceptance</h2>
           <p>Nothing ships because a model said it was done. Every change ends with a human decision: does this do what the product needs, is the evidence convincing, and does it fit where VITALE is going? Product direction, design taste and final acceptance remain human-owned.</p>
           <div class="callout">
             <p>Claude helps a small team approach engineering problems that would conventionally need more engineering capacity. It does not replace engineers, and it does not own the product.</p>
@@ -219,7 +245,7 @@ ACCEPTANCE   Review complete · <span class="ok">human sign-off</span></pre>
         </section>
 
         <section id="future" aria-labelledby="future-title">
-          <h2 id="future-title"><span class="num">12</span>Future Claude &amp; API use</h2>
+          <h2 id="future-title"><span class="num">13</span>Future Claude &amp; API use</h2>
           <p>Today, Claude is used inside our engineering process. VITALE does not currently ship end-user AI features. Areas we are exploring for the future include:</p>
           <div class="mini-grid">
             <div class="mini"><p class="mini__tag">Exploring</p><h3>Internal engineering automation</h3><p>Routine engineering tasks run as repeatable, reviewable workflows.</p></div>
@@ -232,11 +258,11 @@ ACCEPTANCE   Review complete · <span class="ok">human sign-off</span></pre>
           <p>Any player-facing use would be designed, reviewed and accepted under the same human-controlled process described above.</p>
         </section>
 
-        <section aria-labelledby="cs-contact-title">
+        <section class="cs-related" aria-labelledby="cs-contact-title">
           <h2 id="cs-contact-title">Talk to us</h2>
           <p>Questions about how we work, partnerships or investment: <a href="mailto:anatolii@pokekara.online">anatolii@pokekara.online</a>. Everything else: <a href="mailto:hello@pokekara.online">hello@pokekara.online</a>.</p>
           <div class="btn-row">
-            <a class="btn btn--primary" href="../#vitale">Explore VITALE <span aria-hidden="true">→</span></a>
+            <a class="btn btn--primary" href="../#experience">Explore VITALE <span aria-hidden="true">→</span></a>
             <a class="btn btn--ghost" href="../#contact">Contact Pokekara Studio</a>
           </div>
         </section>
@@ -247,9 +273,9 @@ ACCEPTANCE   Review complete · <span class="ok">human sign-off</span></pre>
   <footer class="site-footer">
     <div class="container site-footer__grid">
       <div>
-        <p class="site-footer__brand">Pokekara Studio</p>
-        <p class="muted">VITALE: Football Career</p>
-        <p class="site-footer__status"><span class="pulse" aria-hidden="true"></span>Active Development</p>
+        <p class="site-footer__brand">VITALE: Football Career</p>
+        <p class="muted">by Pokekara Studio</p>
+        <p class="site-footer__status"><span class="pulse" aria-hidden="true"></span>Active development</p>
       </div>
       <div>
         <p class="site-footer__label">Planned</p>
@@ -268,7 +294,8 @@ ACCEPTANCE   Review complete · <span class="ok">human sign-off</span></pre>
       <div>
         <p class="site-footer__label">Explore</p>
         <ul role="list">
-          <li><a href="../#vitale">VITALE</a></li>
+          <li><a href="../#experience">Experience</a></li>
+          <li><a href="../#technology">Technology</a></li>
           <li><a href="./">Built with Claude</a></li>
           <li><a href="../#roadmap">Roadmap</a></li>
         </ul>
@@ -276,7 +303,7 @@ ACCEPTANCE   Review complete · <span class="ok">human sign-off</span></pre>
     </div>
     <div class="container site-footer__base">
       <p>© 2026 Pokekara Studio. All rights reserved.</p>
-      <p class="muted">Claude is a product of Anthropic. Apple and App Store are trademarks of Apple Inc. Google Play is a trademark of Google LLC. VITALE is not yet available on either store.</p>
+      <p class="muted">Claude is a product of Anthropic. Unity is a trademark of Unity Technologies; Blender is a trademark of the Blender Foundation. Apple and App Store are trademarks of Apple Inc. Google Play is a trademark of Google LLC. VITALE is not yet available on either store.</p>
     </div>
   </footer>
 </body>
