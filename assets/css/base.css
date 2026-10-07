@@ -56,8 +56,8 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 650;
-  letter-spacing: -0.025em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   line-height: var(--lh-snug);
   text-wrap: balance;
 }
@@ -180,15 +180,17 @@ code {
 
 .display {
   font-size: var(--fs-3xl);
-  line-height: var(--lh-tight);
-  letter-spacing: -0.04em;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 .h2 {
   font-size: var(--fs-2xl);
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  line-height: 0.98;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
 }
 
 .h3 {

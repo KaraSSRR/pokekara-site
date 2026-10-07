@@ -40,63 +40,119 @@
 }
 
 .brand__mark {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
+}
+
+.brand__text {
+  display: grid;
+  line-height: 1;
 }
 
 .brand__name {
   font-family: var(--font-display);
-  font-weight: 650;
-  font-size: 1.0625rem;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
 }
 
-.brand__name span {
-  color: var(--c-text-3);
+.brand__by {
+  margin-top: 0.2rem;
+  font-size: 0.6875rem;
   font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--c-text-3);
 }
 
-/* Nav */
-.site-nav ul {
+.site-header__actions {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  gap: var(--space-3);
 }
 
-.site-nav a {
+/* Nav (desktop) */
+.site-nav__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.25rem, 1.2vw, 1.25rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav__list a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 0.35rem;
+  color: var(--c-text-2);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--dur) var(--ease);
+}
+
+.site-nav__list a::after {
+  content: "";
+  position: absolute;
+  left: 0.35rem;
+  right: 0.35rem;
+  bottom: 8px;
+  height: 2px;
+  background: var(--c-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease);
+}
+
+.site-nav__list a:hover,
+.site-nav__list a[aria-current="page"],
+.site-nav__list a.is-active {
+  color: var(--c-text);
+}
+
+.site-nav__list a:hover::after,
+.site-nav__list a[aria-current="page"]::after,
+.site-nav__list a.is-active::after {
+  transform: scaleX(1);
+}
+
+.site-nav__num,
+.site-nav__meta {
+  display: none;
+}
+
+/* Contact sits in the header CTA on desktop and in the menu list when collapsed */
+@media (min-width: 1101px) {
+  .site-nav__contact {
+    display: none;
+  }
+}
+
+.header-cta {
   display: inline-flex;
   align-items: center;
   min-height: 40px;
-  padding: 0.4rem 0.75rem;
-  border-radius: 999px;
-  color: var(--c-text-2);
-  font-size: var(--fs-sm);
-  font-weight: 500;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease);
-}
-
-.site-nav a:hover,
-.site-nav a[aria-current="page"] {
-  color: var(--c-text);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.site-nav a.is-active {
-  color: var(--c-accent-strong);
-}
-
-.site-nav a.site-nav__cta {
-  margin-left: 0.35rem;
-  color: var(--c-text);
+  padding: 0 1.1rem;
   border: 1px solid var(--c-line-strong);
+  border-radius: 999px;
+  color: var(--c-text);
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease);
 }
 
-.site-nav a.site-nav__cta:hover {
+.header-cta:hover {
+  color: var(--c-text);
   border-color: var(--c-accent);
   background: var(--c-accent-soft);
 }
@@ -173,13 +229,15 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  min-height: 48px;
-  padding: 0.75rem 1.35rem;
+  min-height: 52px;
+  padding: 0.75rem 1.6rem;
   border-radius: 999px;
   border: 1px solid transparent;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  letter-spacing: -0.005em;
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   text-decoration: none;
   text-align: center;
   transition: transform var(--dur) var(--ease), background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), color var(--dur) var(--ease);
@@ -303,8 +361,9 @@
 .site-footer__brand {
   font-family: var(--font-display);
   font-size: var(--fs-lg);
-  font-weight: 650;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: var(--c-text);
 }
 
@@ -340,5 +399,26 @@
 }
 
 .site-footer__base .muted {
-  max-width: 60ch;
+  max-width: 80ch;
+}
+
+/* Text link with arrow */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.text-link span {
+  transition: transform var(--dur) var(--ease);
+}
+
+.text-link:hover span {
+  transform: translateX(4px);
 }
