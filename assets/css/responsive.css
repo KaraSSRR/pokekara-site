@@ -1,0 +1,160 @@
+/* Shared responsive layer: header, navigation, footer.
+   Section-specific breakpoints live next to their sections in home.css and claude.css. */
+
+@media (min-width: 1600px) {
+  :root {
+    --container: 1320px;
+  }
+}
+
+/* Collapse navigation */
+@media (max-width: 1100px) {
+  /* Without JS the nav stays visible as a scrollable row under the brand. */
+  html:not(.js) .site-header {
+    position: relative;
+    height: auto;
+  }
+
+  html:not(.js) .site-header__inner {
+    flex-wrap: wrap;
+    padding-block: 0.75rem;
+  }
+
+  html:not(.js) .site-nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  html:not(.js) .hero {
+    margin-top: 0;
+  }
+
+  .js .nav-toggle {
+    display: inline-block;
+  }
+
+  .js .site-nav {
+    position: fixed;
+    inset: var(--header-h) 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-6);
+    padding: var(--space-5) var(--gutter) var(--space-6);
+    overflow-y: auto;
+    background:
+      radial-gradient(70% 40% at 100% 0%, rgba(90, 169, 255, 0.12), transparent 70%),
+      var(--c-bg);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), visibility 0s linear var(--dur);
+  }
+
+  .js .site-header.is-open .site-nav {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), visibility 0s;
+  }
+
+  /* A backdrop-filter on the header would become the containing block of the fixed menu panel. */
+  .js .site-header.is-open {
+    background: var(--c-bg);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .js .site-nav__list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .js .site-nav__list li {
+    border-bottom: 1px solid var(--c-line);
+  }
+
+  .js .site-nav__list a {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    min-height: 64px;
+    padding: 0.6rem 0;
+    font-size: clamp(1.75rem, 1.2rem + 3vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--c-text);
+  }
+
+  .js .site-nav__list a::after {
+    display: none;
+  }
+
+  .js .site-nav__list a:hover,
+  .js .site-nav__list a.is-active,
+  .js .site-nav__list a[aria-current="page"] {
+    color: var(--c-accent-strong);
+  }
+
+  .js .site-nav__num {
+    display: inline;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--c-text-3);
+  }
+
+  .js .site-nav__meta {
+    display: grid;
+    gap: 0.4rem;
+    font-size: var(--fs-sm);
+    color: var(--c-text-2);
+  }
+
+  .js .site-nav__meta p:first-child {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--c-teal);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .js body.nav-open {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 960px) {
+  .site-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .site-footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+}
+
+@media (max-width: 480px) {
+  .header-cta {
+    display: none;
+  }
+
+  .btn-row .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand__by {
+    display: none;
+  }
+}
