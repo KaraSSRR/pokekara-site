@@ -41,19 +41,14 @@
       if (e.key === "Escape" && header.classList.contains("is-open")) setOpen(false, true);
     });
 
-    /* Keep focus inside the open menu (toggle + links) */
+    /* Keep focus inside the open menu: the toggle and the menu links, in that order */
     header.addEventListener("keydown", function (e) {
       if (e.key !== "Tab" || !header.classList.contains("is-open")) return;
       var items = [toggle].concat(Array.prototype.slice.call(nav.querySelectorAll("a")));
-      var first = items[0];
-      var last = items[items.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
+      var i = items.indexOf(document.activeElement);
+      e.preventDefault();
+      var next = i === -1 ? 0 : (i + (e.shiftKey ? -1 : 1) + items.length) % items.length;
+      items[next].focus();
     });
 
     var onBreakpoint = function (mq) {
@@ -111,5 +106,69 @@
 
   spy("[data-nav] a[href^='#']");
   spy(".toc a[href^='#']");
+
+  /* Hero interface concept: tabs switch the phone screen (ARIA tabs pattern) */
+  var tablist = document.querySelector("[data-tabs]");
+  if (tablist) {
+    var tabs = Array.prototype.slice.call(tablist.querySelectorAll("[role='tab']"));
+    var select = function (tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        var panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) {
+          panel.hidden = !on;
+          panel.classList.toggle("is-active", on);
+        }
+      });
+      if (focus) tab.focus();
+      var showcase = tablist.closest(".showcase");
+      if (showcase && tab !== tabs[0]) showcase.classList.add("is-exploring");
+    };
+    tabs.forEach(function (t) {
+      t.addEventListener("click", function () { select(t); });
+    });
+    tablist.addEventListener("keydown", function (e) {
+      var i = tabs.indexOf(document.activeElement);
+      if (i === -1) return;
+      var next = null;
+      if (e.key === "ArrowRight") next = tabs[(i + 1) % tabs.length];
+      else if (e.key === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (e.key === "Home") next = tabs[0];
+      else if (e.key === "End") next = tabs[tabs.length - 1];
+      if (next) {
+        e.preventDefault();
+        select(next, true);
+      }
+    });
+  }
+
+  /* Career journey strip: previous / next controls */
+  var strip = document.querySelector("[data-strip]");
+  var controls = document.querySelector("[data-strip-controls]");
+  if (strip && controls) {
+    var prev = controls.querySelector("[data-strip-prev]");
+    var nextBtn = controls.querySelector("[data-strip-next]");
+    var step = function () {
+      var card = strip.querySelector("li");
+      return card ? card.getBoundingClientRect().width + 16 : strip.clientWidth * 0.8;
+    };
+    var update = function () {
+      var max = strip.scrollWidth - strip.clientWidth - 2;
+      prev.disabled = strip.scrollLeft <= 2;
+      nextBtn.disabled = strip.scrollLeft >= max;
+    };
+    prev.addEventListener("click", function () {
+      strip.scrollBy({ left: -step(), behavior: reduce ? "auto" : "smooth" });
+    });
+    nextBtn.addEventListener("click", function () {
+      strip.scrollBy({ left: step(), behavior: reduce ? "auto" : "smooth" });
+    });
+    strip.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    controls.hidden = false;
+    update();
+  }
 
 })();
