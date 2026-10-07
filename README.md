@@ -1,0 +1,104 @@
+# pokekara-site
+
+The official website for **Pokekara Studio** and its first title, **VITALE: Football Career**. It will be served at <https://pokekara.online/>.
+
+The site:
+
+- presents Pokekara Studio and VITALE to players, partners and investors;
+- explains how the studio uses Claude in its engineering process (`/claude/`);
+- will become the official website linked from the Apple App Store and Google Play listings once VITALE is released.
+
+VITALE is **in active development and not yet released**. The site must not imply otherwise, and must not show invented metrics (downloads, revenue, retention, ratings, funding, testimonials or release dates).
+
+This repository is separate from the VITALE game repository. Do not add game source code here.
+
+## Local preview
+
+The site is static HTML, CSS and vanilla JavaScript. There is no build step and nothing to install.
+
+From the repository root, start any static file server. With Python 3:
+
+```bash
+python -m http.server 8765
+```
+
+Then open <http://localhost:8765/> and <http://localhost:8765/claude/>.
+
+Use a server rather than opening `index.html` directly from disk, so that directory routes such as `claude/` resolve correctly.
+
+## Repository structure
+
+```
+/
+├── index.html                 Homepage
+├── claude/index.html          "How Pokekara Builds VITALE with Claude" case study
+├── assets/
+│   ├── css/
+│   │   ├── tokens.css         Design tokens: colours, type scale, spacing, motion
+│   │   ├── base.css           Reset, typography, focus styles, layout primitives
+│   │   ├── components.css     Header, navigation, buttons, status pills, footer
+│   │   ├── pages.css          Homepage sections and /claude/ page layout
+│   │   └── responsive.css     Breakpoints: large desktop → 320px
+│   ├── js/main.js             Progressive enhancement: mobile menu, reveal, scroll-spy
+│   └── img/og-image.png       Social sharing image (1200×630)
+├── docs/
+│   └── claude-development-case-study.md   Long-form source copy for /claude/
+├── favicon.svg
+├── robots.txt
+├── sitemap.xml
+└── CNAME                      Custom domain for GitHub Pages (pokekara.online)
+```
+
+## Editing guidance
+
+- **Copy.** Page text lives directly in `index.html` and `claude/index.html`. Edit the longer case-study text in `docs/claude-development-case-study.md` first, then update `claude/index.html` to match.
+- **Truthfulness.** Keep the product status accurate ("in active development", "planned for Apple App Store and Google Play"). Do not add metrics, ratings, testimonials, partner logos or launch dates unless they are real and approved.
+- **Visuals.** The phone panel in the hero is an original HTML/CSS illustration and is labelled as a concept, not in-game footage. Do not add club crests, league or federation marks, or real player photos. Real VITALE screenshots can replace the concept panel once they are approved for public use; label them accurately.
+- **Styling.** Change colours, type and spacing through `assets/css/tokens.css`. Section styles live in `pages.css`; breakpoint overrides live in `responsive.css`.
+- **JavaScript.** The site must work with JavaScript disabled. `main.js` only adds the mobile menu, reveal-on-scroll, header state and scroll-spy. Content hidden by the reveal effect is only hidden when the `js` class is present on `<html>`, and is always shown under `prefers-reduced-motion: reduce`.
+- **Paths.** Use relative paths (`assets/...` on the homepage, `../assets/...` in `claude/`) so the site works both on the custom domain and in local preview.
+- **New pages.** Create a folder with an `index.html`, copy the `<head>` and header/footer from `claude/index.html`, and add the URL to `sitemap.xml`.
+- **Accessibility.** Keep one `<h1>` per page, keep heading levels in order, keep visible focus styles, and check contrast when changing colours.
+
+## Deployment model
+
+The site is designed for **GitHub Pages**, served from the repository root of the `main` branch with the custom domain `pokekara.online`.
+
+Work happens on feature branches. `site-v1-claude-startup-landing` holds v1 and has **not** been merged into `main` or published.
+
+### Enabling GitHub Pages (when approved)
+
+1. Merge the approved branch into `main`.
+2. In the repository, open **Settings → Pages**.
+3. Under **Build and deployment**, set **Source** to *Deploy from a branch*, branch `main`, folder `/ (root)`.
+4. Set **Custom domain** to `pokekara.online`. The `CNAME` file in this repository already contains it.
+5. After DNS is configured and the certificate is issued, enable **Enforce HTTPS**.
+6. Optionally verify the domain under the account or organization **Settings → Pages → Verified domains** to prevent takeover.
+
+### Custom domain DNS
+
+GitHub's current Pages documentation lists the exact values. At the time of writing, the apex domain uses four `A` records (and optionally `AAAA` records) pointing to GitHub Pages, and `www` uses a `CNAME` to `karassrr.github.io`. Confirm the values against GitHub's documentation before you change anything.
+
+> [!WARNING]
+> **Do not remove or change the email DNS records.** `pokekara.online` already handles email for `hello@` and `anatolii@`. When you activate GitHub Pages, change **only** the web-facing records for the root (`@`) and `www`. Leave these records exactly as they are:
+>
+> - `MX`
+> - `mail`
+> - `smtp`
+> - `pop`
+> - SPF (`TXT` record starting with `v=spf1`)
+> - DKIM (`TXT`/`CNAME` records under `._domainkey`)
+> - DMARC (`TXT` record at `_dmarc`)
+>
+> Some DNS providers replace the whole record set when you "point the domain" somewhere. Edit individual records instead, and take a screenshot or export of the zone before you change it.
+
+## QA checklist
+
+Before you merge changes, check:
+
+- both pages at 320px, 375px, 768px, 1024px, 1440px and 1920px wide, with no horizontal scrolling;
+- the mobile menu opens and closes, closes with Escape, and keeps keyboard focus inside while it is open;
+- every navigation link, in-page anchor and `mailto:` link works;
+- there are no errors in the browser console;
+- the site still works with JavaScript disabled and with reduced motion enabled;
+- the canonical URLs, Open Graph metadata, `sitemap.xml`, `robots.txt` and `CNAME` are correct.
