@@ -2452,3 +2452,8 @@
     font-size: 0.8125rem;
   }
 }
+
+/* Original concept artwork displays */
+.concept-showcase .concept-screen, .concept-experience .concept-screen {width:100%;max-width:370px;margin:0 auto;overflow:hidden;border:1px solid rgba(200,220,245,.25);border-radius:26px;background:#071119;box-shadow:0 40px 95px -30px rgba(0,0,0,.9)}
+.concept-showcase .concept-screen img, .concept-experience .concept-screen img {display:block;width:100%;height:auto}
+.concept-experience{margin:0;display:grid;gap:1rem;justify-items:center}.concept-experience__caption{font-size:var(--fs-sm);color:var(--c-text-3);text-align:center}
