@@ -6,17 +6,17 @@
 
 ## Summary
 
-Pokekara Studio is an independent game studio building **VITALE: Football Career**, a simulation-driven mobile football career RPG for iOS and Android. VITALE is in active development and has not been released yet.
+Pokekara Studio is an independent, founder-led game development initiative in Ukraine, led by developer **Anatolii Ushakov**. It is not currently a separately incorporated business. Its first game, **VITALE: Football Career**, is a simulation-driven mobile football career RPG for iOS and Android in active pre-release development.
 
-Claude is part of how VITALE is engineered. We use it to multiply what our engineers can do, inside a development process that humans control. People decide what we build. Claude helps us analyse, implement, test and review how we build it.
+Claude Code is a primary design and engineering tool for VITALE: game-system design, architecture, C# implementation, testing, review, documentation and creative production tooling. The developer owns product vision, scope decisions and visual/technical acceptance.
 
 **AI-assisted engineering, human-controlled product.**
 
 What this case study does not claim:
 
-- AI did not make our game.
-- Claude does not replace engineers.
-- VITALE does not currently ship end-user AI features.
+- Claude Code substantially contributes to design, architecture and implementation; this does not make unfinished artifacts production-ready.
+- The initiative is not incorporated, funded or released as a commercial game.
+- VITALE does not currently ship end-user AI features or a production Claude API integration.
 
 ---
 
@@ -45,13 +45,13 @@ VITALE is built in three layers:
 2. **The Unity mobile client** shows it: a portrait, one-thumb interface and selected 3D scenes.
 3. **Blender production** gives it a face: characters and high-impact career moments, prepared as mobile-ready assets for the Unity client.
 
-Claude works on the engineering side of that picture:
+Claude contributes across both game design and engineering, including character-asset production workflows still subject to visual acceptance:
 
 - **Simulation systems** are where it does most of its work: architecture, implementation, tests and review.
 - **Data and tooling** covers pipelines, validation rules, diagnostics and internal tools.
 - **QA** covers regression analysis and deterministic checks.
 
-Game design, creative direction, scope and acceptance stay with people.
+Claude supports game-system and creative design; Anatolii owns the vision, design decisions, scope and final acceptance. Character modeling and Unity presentation remain works in progress.
 
 ## 3. The workflow
 
@@ -63,7 +63,7 @@ Humans own the first and last steps. Claude takes part in the steps between them
 
 | Humans own | Claude assists with |
 |---|---|
-| Product direction and game design | Repository-scale analysis |
+| Product vision and final game-design decisions | Game-system design and repository-scale analysis |
 | Final architecture decisions | Implementation |
 | Scope: what is in and what is out | Refactoring |
 | Final acceptance of every change | Test creation |
@@ -167,7 +167,7 @@ Product direction, design taste and final acceptance stay with humans.
 
 ## 13. Future Claude and API use
 
-Today we use Claude inside our engineering process. VITALE does not currently ship any end-user AI features. Areas we are exploring for the future:
+Claude Code is actively used for design and engineering. VITALE is pre-release, does not ship player-facing AI features, and does not yet have a production Claude API integration. Areas we are exploring for the future:
 
 - **Internal engineering automation:** turning routine engineering tasks into repeatable, reviewable workflows.
 - **Simulation diagnostics:** explaining why a match, season or career unfolded the way it did.

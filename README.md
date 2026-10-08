@@ -5,7 +5,8 @@ The official website for **Pokekara Studio** and its first title, **VITALE: Foot
 The site:
 
 - presents Pokekara Studio and VITALE to players, partners and investors;
-- explains how the studio uses Claude in its engineering process (`/claude/`);
+- explains how the studio uses Claude for game design, architecture and engineering (`/claude/`);
+- provides the founder profile and engineering evidence (`/studio/`);
 - will become the official website linked from the Apple App Store and Google Play listings once VITALE is released.
 
 VITALE is **in active development and not yet released**. The site must not imply otherwise, and must not show invented metrics (downloads, revenue, retention, ratings, funding, testimonials or release dates).
@@ -31,6 +32,7 @@ Use a server rather than opening `index.html` directly from disk, so that direct
 ```
 /
 ├── index.html                 Homepage
+├── studio/index.html          Founder profile and current project status
 ├── claude/index.html          "How Pokekara Builds VITALE with Claude" case study
 ├── assets/
 │   ├── css/
@@ -52,7 +54,7 @@ Use a server rather than opening `index.html` directly from disk, so that direct
 
 ## Editing guidance
 
-- **Copy.** Page text lives directly in `index.html` and `claude/index.html`. Edit the longer case-study text in `docs/claude-development-case-study.md` first, then update `claude/index.html` to match.
+- **Copy.** Page text lives directly in `index.html` and `claude/index.html`. Edit the longer case-study text in `docs/claude-development-case-study.md` first, then update `claude/index.html` to match. Keep founder attribution consistent with `studio/index.html`.
 - **Truthfulness.** Keep the product status accurate ("in active development", "planned for Apple App Store and Google Play"). Do not add metrics, ratings, testimonials, partner logos or launch dates unless they are real and approved.
 - **Homepage story.** The homepage sells VITALE first: hero → product thesis → career journey → mobile experience → built differently → technology & production pipeline (simulation → Unity client ← Blender production) → Built with Claude → players → investors → roadmap → studio. Keep that order product-led.
 - **Hero phone.** The phone in the hero is an original HTML/CSS interface concept with the six confirmed VITALE tabs (Home, Training, Business, Media, Career, World). Each tab is a `section.scr` panel in `index.html`; the tab bar is an ARIA tablist driven by `main.js` (click, arrow keys, Home/End). Without JavaScript the Home screen shows. All clubs, players and numbers on it are fictional, and it is labelled "Representative interface concept · in development".
@@ -108,3 +110,6 @@ Before you merge changes, check:
 - there are no errors in the browser console;
 - the site still works with JavaScript disabled and with reduced motion enabled;
 - the canonical URLs, Open Graph metadata, `sitemap.xml`, `robots.txt` and `CNAME` are correct.
+
+
+Site artwork is illustrative: see fictional training and match concept PNGs in assets/img/concepts.
