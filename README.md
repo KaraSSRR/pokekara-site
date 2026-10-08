@@ -110,3 +110,6 @@ Before you merge changes, check:
 - there are no errors in the browser console;
 - the site still works with JavaScript disabled and with reduced motion enabled;
 - the canonical URLs, Open Graph metadata, `sitemap.xml`, `robots.txt` and `CNAME` are correct.
+
+
+Site artwork is illustrative: see fictional training and match concept PNGs in assets/img/concepts.
