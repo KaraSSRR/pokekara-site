@@ -39,10 +39,10 @@ Use a server rather than opening `index.html` directly from disk, so that direct
 │   │   ├── tokens.css         Design tokens: colours, type scale, spacing, motion
 │   │   ├── base.css           Reset, typography, focus styles, layout primitives
 │   │   ├── components.css     Header, navigation, buttons, status pills, footer
-│   │   ├── home.css           Homepage sections, incl. the interactive phone concept (with their breakpoints)
+│   │   ├── home.css           Homepage sections and text-led responsive layouts
 │   │   ├── claude.css         /claude/ case study layout (with its breakpoints)
 │   │   └── responsive.css     Shared breakpoints: header, navigation, footer
-│   ├── js/main.js             Progressive enhancement: mobile menu, phone tabs, journey strip, reveal, scroll-spy
+│   ├── js/main.js             Progressive enhancement: mobile menu, journey strip, reveal, scroll-spy
 │   └── img/og-image.png       Social sharing image (1200×630)
 ├── docs/
 │   └── claude-development-case-study.md   Long-form source copy for /claude/
@@ -57,8 +57,7 @@ Use a server rather than opening `index.html` directly from disk, so that direct
 - **Copy.** Page text lives directly in `index.html` and `claude/index.html`. Edit the longer case-study text in `docs/claude-development-case-study.md` first, then update `claude/index.html` to match. Keep founder attribution consistent with `studio/index.html`.
 - **Truthfulness.** Keep the product status accurate ("in active development", "planned for Apple App Store and Google Play"). Do not add metrics, ratings, testimonials, partner logos or launch dates unless they are real and approved.
 - **Homepage story.** The homepage sells VITALE first: hero → product thesis → career journey → mobile experience → built differently → technology & production pipeline (simulation → Unity client ← Blender production) → Built with Claude → players → investors → roadmap → studio. Keep that order product-led.
-- **Hero phone.** The phone in the hero is an original HTML/CSS interface concept with the six confirmed VITALE tabs (Home, Training, Business, Media, Career, World). Each tab is a `section.scr` panel in `index.html`; the tab bar is an ARIA tablist driven by `main.js` (click, arrow keys, Home/End). Without JavaScript the Home screen shows. All clubs, players and numbers on it are fictional, and it is labelled "Representative interface concept · in development".
-- **Visuals.** Phone and UI illustrations are concepts, not in-game footage. Do not add club crests, league or federation marks, or real player photos. Real VITALE screenshots can replace the concept panel once they are approved for public use; label them accurately.
+- **Public visuals.** Keep the homepage typography-first until genuine, approved gameplay images exist. Do not use generated phone mockups or real football club branding; any future images must be accurately labeled and have verified rights.
 - **Styling.** Change colours, type and spacing through `assets/css/tokens.css`. Homepage section styles live in `home.css`, case-study styles in `claude.css`, and shared header/nav/footer breakpoints in `responsive.css`.
 - **Fonts.** Barlow (text) and Barlow Condensed (display) load from Google Fonts with `display=swap`, and system fonts are the fallback. Before public launch, consider self-hosting the WOFF2 files under `assets/fonts/`. That removes the third-party request, which also helps with GDPR.
 - **JavaScript.** The site must work with JavaScript disabled. `main.js` only adds the mobile menu, reveal-on-scroll, header state and scroll-spy. Content hidden by the reveal effect is only hidden when the `js` class is present on `<html>`, and is always shown under `prefers-reduced-motion: reduce`.
@@ -102,14 +101,11 @@ GitHub's current Pages documentation lists the exact values. At the time of writ
 
 Before you merge changes, check:
 
-- both pages at 320px, 375px, 768px, 1024px, 1440px and 1920px wide, with no horizontal scrolling;
+- all pages at 320px, 375px, 768px, 1024px, 1440px and 1920px wide, with no horizontal scrolling;
 - the mobile menu opens and closes, closes with Escape, and keeps keyboard focus inside while it is open;
-- every hero phone tab switches the screen, and arrow keys move between tabs;
 - the career journey strip scrolls with its arrow buttons and with the keyboard;
 - every navigation link, in-page anchor and `mailto:` link works;
 - there are no errors in the browser console;
 - the site still works with JavaScript disabled and with reduced motion enabled;
 - the canonical URLs, Open Graph metadata, `sitemap.xml`, `robots.txt` and `CNAME` are correct.
 
-
-Site artwork is illustrative: see fictional training and match concept PNGs in assets/img/concepts.

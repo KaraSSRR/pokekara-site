@@ -107,43 +107,6 @@
   spy("[data-nav] a[href^='#']");
   spy(".toc a[href^='#']");
 
-  /* Hero interface concept: tabs switch the phone screen (ARIA tabs pattern) */
-  var tablist = document.querySelector("[data-tabs]");
-  if (tablist) {
-    var tabs = Array.prototype.slice.call(tablist.querySelectorAll("[role='tab']"));
-    var select = function (tab, focus) {
-      tabs.forEach(function (t) {
-        var on = t === tab;
-        t.setAttribute("aria-selected", String(on));
-        t.tabIndex = on ? 0 : -1;
-        var panel = document.getElementById(t.getAttribute("aria-controls"));
-        if (panel) {
-          panel.hidden = !on;
-          panel.classList.toggle("is-active", on);
-        }
-      });
-      if (focus) tab.focus();
-      var showcase = tablist.closest(".showcase");
-      if (showcase && tab !== tabs[0]) showcase.classList.add("is-exploring");
-    };
-    tabs.forEach(function (t) {
-      t.addEventListener("click", function () { select(t); });
-    });
-    tablist.addEventListener("keydown", function (e) {
-      var i = tabs.indexOf(document.activeElement);
-      if (i === -1) return;
-      var next = null;
-      if (e.key === "ArrowRight") next = tabs[(i + 1) % tabs.length];
-      else if (e.key === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
-      else if (e.key === "Home") next = tabs[0];
-      else if (e.key === "End") next = tabs[tabs.length - 1];
-      if (next) {
-        e.preventDefault();
-        select(next, true);
-      }
-    });
-  }
-
   /* Career journey strip: previous / next controls */
   var strip = document.querySelector("[data-strip]");
   var controls = document.querySelector("[data-strip-controls]");
