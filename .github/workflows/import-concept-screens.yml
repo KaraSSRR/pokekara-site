@@ -1,0 +1,43 @@
+name: Import VITALE concept screens
+on:
+  push:
+    branches: [site-v3-founder-claude-evidence]
+    paths: [.github/workflows/import-concept-screens.yml]
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download original fictional concept screenshots
+        env:
+          TRAINING_URL: 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/cc39df89-916b-4453-b9b5-a47da9c7d81d.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZTNhYzdmNGZlM2E1NjM4NyIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MTY2NTYxNX0.eF71YNgZZ33ycOUpxjgXyiknBAdR4TNTfyBq6iB6F3c'
+          MATCH_URL: 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/bcc38a98-73d7-4155-b8e1-652a57c4e814.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMTg3N2Q4NWEwM2Q3ZjYxNyIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MTYxMTM1NH0._F9S6rDsTOeD6Spzh0Bl18yRuYhNBE_vrsG9giNGlp0'
+        run: |
+          set -euo pipefail
+          mkdir -p assets/img/concepts
+          curl --fail --location --retry 2 --silent --show-error "$TRAINING_URL" -o assets/img/concepts/training.png
+          curl --fail --location --retry 2 --silent --show-error "$MATCH_URL" -o assets/img/concepts/match-day.png
+          file assets/img/concepts/*.png
+          python3 - <<'PY'
+          from pathlib import Path
+          for name in ("training.png", "match-day.png"):
+              p = Path("assets/img/concepts") / name
+              data = p.read_bytes()
+              assert data[:8] == b"\x89PNG\r\n\x1a\n", name
+              assert len(data) > 500_000, name
+              print(name, len(data))
+          PY
+      - name: Commit source images to branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/img/concepts/*.png
+          if ! git diff --cached --quiet; then
+            git commit -m "assets: add original VITALE concept PNG screens"
+            git push origin HEAD:site-v3-founder-claude-evidence
+          fi
