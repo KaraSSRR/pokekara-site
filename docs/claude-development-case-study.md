@@ -1,186 +1,85 @@
-# How Pokekara Builds VITALE with Claude
+# Building VITALE with Claude
 
-*This is the long-form source copy for <https://pokekara.online/claude/>. Edit this file first, then update `claude/index.html` to match. The public page is a condensed version of this text.*
+*Source copy and evidence notes for https://pokekara.online/claude/. Last updated October 2026.*
 
----
+## Our studio and Claude's role
 
-## Summary
+Pokekara Studio is an independent, bootstrapped game development initiative led by **Anatolii Ushakov** in Ukraine. The studio is not currently separately incorporated. **VITALE: Football Career** is an original mobile football career RPG for iOS and Android, currently in pre-release development.
 
-Pokekara Studio is an independent, founder-led game development initiative in Ukraine, led by developer **Anatolii Ushakov**. It is not currently a separately incorporated business. Its first game, **VITALE: Football Career**, is a simulation-driven mobile football career RPG for iOS and Android in active pre-release development.
+**Claude Code is the central environment in which our gameplay systems, C# architecture, implementation, testing, review, documentation and creative production work are developed.** Claude contributes to game design, not merely software maintenance. The developer sets the vision, makes product-policy choices and accepts or rejects results.
 
-Claude Code is a primary design and engineering tool for VITALE: game-system design, architecture, C# implementation, testing, review, documentation and creative production tooling. The developer owns product vision, scope decisions and visual/technical acceptance.
+The studio does **not** claim that VITALE is commercially released, that the Unity presentation is complete, or that there is a deployed player-facing Claude API integration.
 
-**AI-assisted engineering, human-controlled product.**
+## Why this workflow is necessary
 
-What this case study does not claim:
+A player develops, earns selection, plays minutes, experiences fatigue and form changes, attracts transfers, signs contracts and builds a life within a world that evolves independently. Design decisions connect multiple systems and simulated seasons.
 
-- Claude Code substantially contributes to design, architecture and implementation; this does not make unfinished artifacts production-ready.
-- The initiative is not incorporated, funded or released as a commercial game.
-- VITALE does not currently ship end-user AI features or a production Claude API integration.
+We use Claude to:
+- turn gameplay goals into explicit, testable design rules;
+- evaluate cross-system architecture, version pins and save-state ownership;
+- implement C# simulation systems and diagnostics;
+- create deterministic tests, compare world-state fingerprints and analyze failures;
+- coordinate bounded implementation and independent code review;
+- develop visual direction, UI requirements and Blender/Unity technical-art workflows.
 
----
+## Game design examples
 
-## 1. Why Claude
+**Coach authority and player agency.** The intended system lets a coach play a midfielder outside their preferred position when squad needs demand it. Accepting the position may advance secondary-position mastery; requesting to return to the preferred role can create morale consequences if the coach rejects it. The design and authoritative match-position evidence are under active reconciliation, not announced as finished gameplay.
 
-VITALE is a persistent football world, not a collection of separate screens. Its systems feed one another:
+**Wage expectations and popularity.** Contract pricing should reflect current player ability, sporting form, earned reputation, club resources and negotiation context — not merely a small raise on a player's previous contract. This has been an explicit owner-policy decision for ongoing market calibration.
 
-> player development → squad selection → minutes played → fatigue and form → performance → market interest → transfer opportunities → career trajectory
+**Football career beyond matches.** The planned experience links training, club selection, personal relationships, media, contracts, money and a persistent world. The game design exists at different stages of implementation and integration; not every described feature is ready.
 
-A change at the start of that chain can surface several systems later, sometimes many simulated seasons later. You cannot treat a change as an isolated feature.
+## Implemented engineering foundations
 
-For a small team, the hardest part is rarely writing a single feature. It is holding the whole system in view while changing one part of it. Claude helps with exactly that. It can:
+- **MatchEngine:** deterministic football match simulation and test evidence.
+- **WorldEngine:** evolving club, player and competition state with save/reload and resume validation.
+- **NPC lifecycle and training:** development, fitness, fatigue, form, recovery and longer-run football-world progression.
+- **Transfers and markets:** contract renewals, free agents, loans and club wage commitments, with ongoing economic calibration.
+- **Data and validation:** source-data mapping, architecture boundaries, scripted checks, release builds and regression diagnostics.
 
-- read across a large repository;
-- trace how state and logic flow between systems;
-- reason about the consequences of a change before the code changes;
-- then help implement, test and review the change itself.
+The three engineering layers are C# simulation, the developing Unity mobile client, and Blender character/visual production. The first is comparatively mature; the latter two remain active workstreams.
 
-This lets a small independent studio take on engineering problems that would normally need more engineering capacity.
+## Concrete QA examples
 
-## 2. Where Claude fits in VITALE
+### Persistent development, CPE-NPC
 
-VITALE is built in three layers:
+The integrated CPE-NPC work recorded deterministic checks for direct-vs-chunked world advance, continuous vs save/reload/resume runs, legacy fingerprints, calibration artifact comparisons and scoped release validation. These are source-controlled engineering-stage reports.
 
-1. **Simulation systems** decide what happens: MatchEngine, WorldEngine, career systems, competitions, transfers and the data pipeline.
-2. **The Unity mobile client** shows it: a portrait, one-thumb interface and selected 3D scenes.
-3. **Blender production** gives it a face: characters and high-impact career moments, prepared as mobile-ready assets for the Unity client.
+### Market economy, long-horizon failure
 
-Claude contributes across both game design and engineering, including character-asset production workflows still subject to visual acceptance:
+A synthetic 20-club market stress world found that clubs started at 100% wage-budget utilization, preventing renewals. A market remediation corrected that starting defect, but a later deterministic **10-season** calibration discovered structural deflation and underpaid academy-origin players. Instead of claiming completion, the team **blocked integration** pending skill-aware pricing policy. Source evidence is maintained in the RTL market-economy QA reports, including `v3-long-horizon-acceptance.md`.
 
-- **Simulation systems** are where it does most of its work: architecture, implementation, tests and review.
-- **Data and tooling** covers pipelines, validation rules, diagnostics and internal tools.
-- **QA** covers regression analysis and deterministic checks.
+### Character visual acceptance
 
-Claude supports game-system and creative design; Anatolii owns the vision, design decisions, scope and final acceptance. Character modeling and Unity presentation remain works in progress.
+Blender tooling can prove topology, file validity and render reproducibility, but those do not guarantee credible human anatomy. Character prototypes failed independent visual gates and were not approved for production. Claude assists with creative direction and development workflows, while the developer retains final visual acceptance.
 
-## 3. The workflow
+These are real examples of the value of Claude-led engineering: discover a defect, quantify it, review independently and stop when evidence fails.
 
-Every meaningful change follows the same path:
+## How work proceeds
 
-**Product direction → Architecture → Implementation → Automated testing → Independent review → Human acceptance**
+1. **Founder-directed vision:** Anatolii defines the experience and priorities.
+2. **Claude-supported design:** turn ideas into gameplay rules and technical specifications.
+3. **Architecture:** analyze dependencies, versioning, persistence, and source boundaries.
+4. **Scoped implementation:** work in isolated branches with explicit change permissions.
+5. **Deterministic verification:** focused test suites, regression cases, multi-season scenarios and migration checks.
+6. **Independent Claude review:** investigate correctness, scope, unintended consequences and economic/visual quality.
+7. **Founder acceptance:** accept, remediate or stop. Automated success alone does not constitute a finished product.
 
-Humans own the first and last steps. Claude takes part in the steps between them.
+## What is not yet released
 
-| Humans own | Claude assists with |
-|---|---|
-| Product vision and final game-design decisions | Game-system design and repository-scale analysis |
-| Final architecture decisions | Implementation |
-| Scope: what is in and what is out | Refactoring |
-| Final acceptance of every change | Test creation |
-| | Regression analysis |
-| | Code review |
-| | Technical documentation |
-| | Decomposing large engineering objectives |
+- No public mobile game, App Store/Google Play listing, measured retention or commercial user base.
+- No claim of a production Claude API integration or player-facing generative-AI feature.
+- No claim that full Life/Fanbase calibration, Unity scenes, 3D character production or all market rules have passed final acceptance.
+- No invented funding, LLC, other legal entity or licensing rights.
 
-## 4. Architecture reasoning
+## Next steps and why support matters
 
-Before implementation starts, Claude analyses the relevant parts of the repository and answers questions such as:
-
-- Which systems does this change involve?
-- Where does the relevant state live, and who reads or writes it?
-- What depends on the code we are about to change?
-- Which invariants must hold? Determinism, for example, or persistence compatibility.
-
-The output is a concrete map of the change, not just a plan to start typing. Claude may propose options and trade-offs, but a human makes the decision. We record architecture decisions so that the next change builds on an explicit foundation rather than on someone's memory.
-
-## 5. Implementation
-
-We break large objectives into **bounded tasks**. Each task has a brief:
-
-```
-OBJECTIVE    One bounded change, stated plainly
-CONTEXT      Systems and files involved
-CONSTRAINTS  Determinism holds · no unrelated changes
-TESTS        New behaviour covered · existing suite passes
-ACCEPTANCE   Review complete · human sign-off
-```
-
-Claude implements against the brief, not against an open-ended request. Bounded changes are easier to review, test and revert, and they keep Claude focused on the part of the system the task is about.
-
-## 6. Test generation
-
-We write tests alongside the code, and treat them as part of the change. Claude helps with:
-
-- unit tests for individual rules;
-- scenario tests for simulation behaviour that spans several steps;
-- edge cases that are easy to overlook.
-
-Because the systems interact, many of the most valuable tests check outcomes across systems. For example, a test can confirm that a change to fatigue does not quietly break selection logic further down the chain.
-
-## 7. Regression analysis
-
-When a change touches shared systems, Claude helps us work out what could regress and why. It reads test output and diagnostic logs that are too long to inspect comfortably by hand. It then groups failures by their likely cause and points to where behaviour diverged.
-
-A green test run is not the goal. The goal is to understand whether each changed result is:
-
-- a bug;
-- an intended consequence of the change; or
-- a sign that a test itself needs updating.
-
-A human makes that judgement.
-
-## 8. Independent review
-
-Implementation and review are separate steps. A review pass:
-
-- starts from a fresh context;
-- reads the diff against the original brief;
-- is asked explicitly to challenge assumptions, looking for missed edge cases, unintended side effects, scope creep, and code that does something other than what the brief asked for.
-
-We verify findings before acting on them, and a human decides which findings matter.
-
-## 9. Deterministic validation
-
-VITALE's MatchEngine is a headless simulation designed to be deterministic: the same inputs and the same seed produce the same result. That property makes the simulation testable and keeps it balanceable over the long term.
-
-We use determinism as a safety net:
-
-- If a change should not affect outcomes, we check that it doesn't.
-- If a change should affect outcomes, we measure the difference instead of judging it by eye.
-
-Claude helps write these checks and helps interpret any differences in the results.
-
-## 10. Data tooling
-
-A football world depends on a lot of structured data: player identity and roster data, physical profiles, clubs and competitions. Claude helps us build and maintain the pipelines that shape, validate and load this data. It also helps write the validation rules that catch inconsistencies before they reach the simulation.
-
-## 11. Multi-agent development workflows
-
-We split larger objectives across focused Claude sessions, each with its own role:
-
-- exploring the codebase;
-- implementing a bounded task;
-- running verification;
-- reviewing a change made in a different session.
-
-Separate roles keep each context small, and they mean the agent that reviews a change is never the one that wrote it. A human coordinates the work, sets the scope of each task and integrates the results.
-
-## 12. Human acceptance
-
-Nothing ships because a model said it was done. Every change ends with a human decision on three questions:
-
-- Does it do what the product needs?
-- Is the evidence convincing?
-- Does it fit where VITALE is going?
-
-Product direction, design taste and final acceptance stay with humans.
-
-## 13. Future Claude and API use
-
-Claude Code is actively used for design and engineering. VITALE is pre-release, does not ship player-facing AI features, and does not yet have a production Claude API integration. Areas we are exploring for the future:
-
-- **Internal engineering automation:** turning routine engineering tasks into repeatable, reviewable workflows.
-- **Simulation diagnostics:** explaining why a match, season or career unfolded the way it did.
-- **QA analysis:** triaging large test and balancing runs into actionable findings.
-- **Narrative and content tooling:** helping writers produce and maintain career content at scale.
-- **Localization workflows:** supporting translation and consistency checks across languages.
-- **Developer intelligence:** summarising large diagnostic outputs into the items that need attention.
-
-Any player-facing use would go through the same human-controlled design, review and acceptance process described above.
-
----
+We are a small bootstrapped project in Ukraine, using Claude Code as a daily engineering and creative work environment. Greater access would make repeated long-horizon QA, design iteration, asset-production assistance and review more affordable. Future Claude API integrations may support internal diagnostics, localization, narrative tooling and QA, but are exploratory.
 
 ## Contact
 
-- Partnerships, investment, and questions about how we work: anatolii@pokekara.online
-- General enquiries: hello@pokekara.online
+- Developer: Anatolii Ushakov, Ukraine.
+- Project/studio profile: https://pokekara.online/studio/
+- Technical case study: https://pokekara.online/claude/
+- Email: anatolii@pokekara.online and hello@pokekara.online.

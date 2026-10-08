@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>How Pokekara Builds VITALE with Claude</title>
-  <meta name="description" content="A case study in AI-assisted engineering with human-controlled product: how Pokekara Studio uses Claude to design, implement, test and review the interconnected simulation systems behind VITALE: Football Career.">
+  <title>Building VITALE with Claude — Pokekara Studio</title>
+  <meta name="description" content="Inside the Claude-first development of VITALE: Football Career — game design, C# simulation systems, deterministic testing, technical review and creative production.">
   <link rel="canonical" href="https://pokekara.online/claude/">
   <meta name="theme-color" content="#07090c">
   <meta name="color-scheme" content="dark">
 
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Pokekara Studio">
-  <meta property="og:title" content="How Pokekara Builds VITALE with Claude">
-  <meta property="og:description" content="AI-assisted engineering, human-controlled product. How a small studio uses Claude across architecture, implementation, testing and review.">
+  <meta property="og:title" content="Building VITALE with Claude">
+  <meta property="og:description" content="A concrete look at Claude-led game design, C# engineering, ten-season testing and founder-directed development.">
   <meta property="og:url" content="https://pokekara.online/claude/">
   <meta property="og:image" content="https://pokekara.online/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Pokekara Studio — VITALE: Football Career, in active development">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="How Pokekara Builds VITALE with Claude">
-  <meta name="twitter:description" content="AI-assisted engineering, human-controlled product. How a small studio uses Claude across architecture, implementation, testing and review.">
+  <meta name="twitter:title" content="Building VITALE with Claude">
+  <meta name="twitter:description" content="A concrete look at Claude-led game design, C# engineering, ten-season testing and founder-directed development.">
   <meta name="twitter:image" content="https://pokekara.online/assets/img/og-image.png">
 
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -85,13 +85,13 @@
               <li><span aria-current="page">Built with Claude</span></li>
             </ol>
           </nav>
-          <p class="eyebrow">Engineering case study</p>
-          <h1 class="display" id="cs-title">How Pokekara Builds VITALE with Claude</h1>
-          <p class="lead">VITALE: Football Career is an independent football career RPG in development in Ukraine. Led by developer Anatolii Ushakov, the project relies heavily on Claude Code for game-system design, software architecture, C# implementation, automated testing, technical review and creative production workflows. Results are subject to developer direction and acceptance.</p>
+          <p class="eyebrow">Inside our Claude-first workflow</p>
+          <h1 class="display" id="cs-title">One founder. Claude. An entire football world.</h1>
+          <p class="lead">VITALE: Football Career is a mobile football career RPG being built by Ukraine-based developer Anatolii Ushakov. Claude Code is the central environment for designing gameplay systems, creating the C# simulation architecture, implementing features, testing long-running worlds and developing creative production workflows. The founder directs the product and approves every meaningful result.</p>
           <ul class="cs-meta" role="list">
-            <li>AI-assisted engineering</li>
-            <li>Human-controlled product</li>
-            <li>Simulation systems</li>
+            <li>Claude-led design &amp; engineering</li>
+            <li>Persistent football simulation</li>
+            <li>Founder-directed acceptance</li>
           </ul>
         </div>
       </div>
@@ -99,174 +99,110 @@
 
     <div class="container cs-layout">
       <aside class="toc" aria-labelledby="toc-title">
-        <p class="toc__title" id="toc-title">On this page</p>
+        <p class="toc__title" id="toc-title">Inside the workflow</p>
         <ol>
-          <li><a href="#why">Why Claude</a></li>
-          <li><a href="#where">Where Claude fits</a></li>
-          <li><a href="#workflow">The workflow</a></li>
-          <li><a href="#architecture">Architecture reasoning</a></li>
-          <li><a href="#implementation">Implementation</a></li>
-          <li><a href="#tests">Test generation</a></li>
-          <li><a href="#regression">Regression analysis</a></li>
-          <li><a href="#review">Independent review</a></li>
-          <li><a href="#determinism">Deterministic validation</a></li>
-          <li><a href="#data">Data tooling</a></li>
-          <li><a href="#multi-agent">Multi-agent workflows</a></li>
-          <li><a href="#acceptance">Human acceptance</a></li>
-          <li><a href="#future">Future Claude &amp; API use</a></li>
+          <li><a href="#mission">Why Claude</a></li>
+          <li><a href="#design">Game design</a></li>
+          <li><a href="#systems">What Claude builds</a></li>
+          <li><a href="#case-study">Real engineering evidence</a></li>
+          <li><a href="#creative">Visual direction</a></li>
+          <li><a href="#delivery">Development process</a></li>
+          <li><a href="#status">What is ready</a></li>
+          <li><a href="#next">What's next</a></li>
         </ol>
       </aside>
 
       <article class="prose">
-        <section id="why" aria-labelledby="why-title">
-          <h2 id="why-title"><span class="num">01</span>Why Claude</h2>
-          <p>VITALE is not a set of independent screens. It is a persistent football world where systems feed one another. A change to how a player develops can alter who gets selected, how many minutes they play, how tired they become, how well they perform, which clubs take notice and, eventually, the shape of an entire career.</p>
-          <ol class="flowline" role="list" aria-label="Example of connected systems">
-            <li>Player development</li>
-            <li>Squad selection</li>
-            <li>Minutes played</li>
-            <li>Fatigue &amp; form</li>
-            <li>Performance</li>
-            <li>Market interest</li>
-            <li>Transfer opportunities</li>
-            <li>Career trajectory</li>
-          </ol>
-          <p>For a small team, the hard part is not writing any single feature. It is holding the whole system in view while changing one part of it. Claude helps us do that: it can read across a large repository, trace how systems connect, and reason about consequences before code changes — and then help implement, test and review those changes.</p>
+        <section id="mission" aria-labelledby="mission-title">
+          <h2 id="mission-title"><span class="num">01</span>Why we build with Claude</h2>
+          <p>VITALE is not a collection of independent football mini-games. A player develops, competes for selection, earns minutes, accumulates fatigue, attracts transfer interest and negotiates a career inside a world that keeps moving. Every system affects the others.</p>
+          <p>Claude Code is the core tool that makes this interconnected project feasible for a bootstrapped, founder-led studio. We work with Claude across the process — from translating the founder's gameplay ideas into explicit rules, through designing C# architecture and writing implementation, to testing, debugging, documentation and review.</p>
           <div class="callout callout--teal">
-            <p class="callout__label">Our principle</p>
-            <p><strong>AI-assisted engineering, human-controlled product.</strong> Claude expands what we can build. It does not decide what we build.</p>
+            <p class="callout__label">The principle behind the work</p>
+            <p><strong>Claude is central to building the game. The developer is accountable for the game.</strong> Anatolii Ushakov defines the vision, judges trade-offs, reviews evidence and decides whether a feature is accepted or sent back for improvement.</p>
           </div>
         </section>
 
-        <section id="where" aria-labelledby="where-title">
-          <h2 id="where-title"><span class="num">02</span>Where Claude fits in VITALE</h2>
-          <p>VITALE is built in three layers: headless simulation systems that decide what happens, a Unity mobile client that shows it, and a Blender production pipeline for characters and high-impact career moments. Claude contributes to both game design and engineering, including character-production tooling and visual direction. 3D character assets remain under visual remediation; a passing export is not the same as an approved production model.</p>
+        <section id="design" aria-labelledby="design-title">
+          <h2 id="design-title"><span class="num">02</span>From an idea to gameplay design</h2>
+          <p>Claude is not limited to explaining code that already exists. We use it to turn football and life-simulation ideas into systems with understandable choices, consequences and testable rules.</p>
           <div class="mini-grid">
-            <div class="mini"><h3>Simulation systems</h3><p>MatchEngine, WorldEngine, career systems, competitions and transfers: the main place Claude helps with architecture, implementation, tests and review.</p></div>
-            <div class="mini"><h3>Data &amp; tooling</h3><p>Data pipelines, validation rules, diagnostics and the internal tools that keep a large world consistent.</p></div>
-            <div class="mini"><h3>QA</h3><p>Regression analysis and deterministic checks across the systems above.</p></div>
-            <div class="mini"><h3>Game design &amp; character production</h3><p>Claude supports game-system design, visual direction and Blender character-production tooling. Anatolii owns creative decisions and visual acceptance; character quality is still being refined.</p></div>
+            <div class="mini"><h3>Coach &amp; position decisions</h3><p>What happens when a coach selects a midfielder on the wing? We specify actual match-position evidence, optional secondary-position learning, player requests and morale consequences. This design is undergoing implementation and reconciliation, not advertised as released gameplay.</p></div>
+            <div class="mini"><h3>Contracts &amp; reputation</h3><p>We design salary negotiations around the footballer's current ability, sporting form, market demand, reputation and club finances — then check whether the resulting economy remains credible over many seasons.</p></div>
+            <div class="mini"><h3>A football life, not only matches</h3><p>Training, relationships, media, business decisions and a personal career are planned as connected parts of one RPG, with a distinction between implemented engine foundations and mechanics still being calibrated.</p></div>
+            <div class="mini"><h3>Mobile-first creative direction</h3><p>Claude supports the information architecture and creative planning for a portrait-first mobile experience, with selected 3D events rather than an expensive open 3D world. Final UI presentation remains in development.</p></div>
+          </div>
+          <p>This process deliberately separates <strong>design intent</strong> from <strong>implemented and accepted behavior</strong>. A feature does not become a finished product simply because its specification is complete.</p>
+        </section>
+
+        <section id="systems" aria-labelledby="systems-title">
+          <h2 id="systems-title"><span class="num">03</span>What Claude builds with us</h2>
+          <p>Core development takes place in a modular C# simulation repository. Claude Code helps create and evolve the engineering layers, working to explicit boundaries rather than generating disconnected features.</p>
+          <div class="mini-grid">
+            <div class="mini"><h3>MatchEngine</h3><p>Deterministic match simulation, match evidence and test fixtures. Given the same authoritative inputs and simulation rules, repeat runs can be compared reproducibly.</p></div>
+            <div class="mini"><h3>WorldEngine</h3><p>A persistent football world with clubs, competitions, contracts and player lifecycle state. Simulation continuity, saved-game compatibility and replay consistency are major engineering requirements.</p></div>
+            <div class="mini"><h3>Player progression</h3><p>Training, physical development, fatigue, recovery, form and injuries participate in an evolving career. The wider NPC population is simulated instead of frozen between hero appearances.</p></div>
+            <div class="mini"><h3>Market &amp; economy</h3><p>Transfer and loan decisions, club wage budgets, renewals and hero offers. Long-horizon pricing rules remain under calibration and are not considered release-ready solely because unit tests pass.</p></div>
+            <div class="mini"><h3>Data &amp; tooling</h3><p>Validated player and competition data, build scripts, structured test evidence and reproducible diagnostics for a simulation that must stay understandable as it grows.</p></div>
+            <div class="mini"><h3>Unity &amp; Blender workflows</h3><p>Claude contributes to client architecture, visual direction, character authoring workflows and technical-art tools. Final 3D and mobile presentation are separate workstreams still undergoing visual acceptance.</p></div>
           </div>
         </section>
 
-        <section id="workflow" aria-labelledby="workflow-title">
-          <h2 id="workflow-title"><span class="num">03</span>The workflow</h2>
-          <p>Every meaningful change follows the same path. Claude participates in most stages; humans own the first and the last.</p>
-          <ol class="flowline" role="list" aria-label="Development workflow">
-            <li class="is-human">Product direction</li>
-            <li>Architecture</li>
-            <li>Implementation</li>
-            <li>Automated testing</li>
-            <li>Independent review</li>
-            <li class="is-human">Human acceptance</li>
-          </ol>
-          <div class="split-table">
-            <div class="split-table__human">
-              <h3>Humans own</h3>
-              <ul>
-                <li>Product vision and final game-design decisions</li>
-                <li>Final architecture decisions</li>
-                <li>Scope — what is in and what is out</li>
-                <li>Final acceptance of every change</li>
-              </ul>
-            </div>
-            <div class="split-table__claude">
-              <h3>Claude assists with</h3>
-              <ul>
-                <li>Game-system design and repository-scale analysis</li>
-                <li>Architecture, C# implementation and refactoring</li>
-                <li>Character-art workflow design and 3D tooling</li>
-                <li>Test creation and regression analysis</li>
-                <li>Code review and technical documentation</li>
-                <li>Decomposing large engineering objectives</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section id="architecture" aria-labelledby="architecture-title">
-          <h2 id="architecture-title"><span class="num">04</span>Architecture reasoning</h2>
-          <p>Before implementation, we ask Claude to analyse the relevant parts of the repository: which systems are involved, where state lives, what depends on what, and which invariants must not break. This turns a vague objective into a concrete map of the change.</p>
-          <p>Claude proposes options and trade-offs; a human chooses. Architectural decisions are made by people and written down, so the next change starts from an explicit foundation rather than from memory.</p>
-        </section>
-
-        <section id="implementation" aria-labelledby="implementation-title">
-          <h2 id="implementation-title"><span class="num">05</span>Implementation</h2>
-          <p>Large objectives are decomposed into bounded tasks. Each task has an explicit scope, constraints and acceptance criteria, and Claude implements against that brief — not against an open-ended request.</p>
-          <pre class="term" aria-label="Structure of a typical task brief"><span class="c"># The shape of a typical task brief</span>
-OBJECTIVE    One bounded change, stated plainly
-CONTEXT      Systems and files involved
-CONSTRAINTS  Determinism holds · no unrelated changes
-TESTS        New behaviour covered · existing suite passes
-ACCEPTANCE   Review complete · <span class="ok">human sign-off</span></pre>
-          <p>Bounded changes are easier to review, easier to test and easier to revert. They also keep Claude's work focused on the part of the system the task is actually about.</p>
-        </section>
-
-        <section id="tests" aria-labelledby="tests-title">
-          <h2 id="tests-title"><span class="num">06</span>Test generation</h2>
-          <p>Claude helps write automated tests alongside the code: unit tests for individual rules, scenario tests for multi-step simulation behaviour, and checks for edge cases a person might not think to try. Tests are treated as part of the change, not an afterthought.</p>
-          <p>Because simulation systems interact, many of the most valuable tests describe outcomes across systems — for example, that a fatigue change does not silently break selection logic further down the chain.</p>
-        </section>
-
-        <section id="regression" aria-labelledby="regression-title">
-          <h2 id="regression-title"><span class="num">07</span>Regression analysis</h2>
-          <p>When a change touches shared systems, Claude helps identify what could regress and why. It reads test output and diagnostic logs that are too long to inspect comfortably by hand, groups failures by likely cause, and points to where behaviour diverged.</p>
-          <p>The goal is not just a green test run. It is understanding whether a changed result is a bug, an intended consequence, or a sign that a test needs to change — and that judgement stays with a human.</p>
-        </section>
-
-        <section id="review" aria-labelledby="review-title">
-          <h2 id="review-title"><span class="num">08</span>Independent review</h2>
-          <p>Implementation and review are kept separate. A review pass starts from a fresh context, reads the diff against the original brief, and is explicitly asked to challenge assumptions: missed edge cases, unintended side effects, scope creep, and places where the code does something other than what was asked.</p>
-          <p>Findings are verified before they are acted on. A human decides which findings matter.</p>
-        </section>
-
-        <section id="determinism" aria-labelledby="determinism-title">
-          <h2 id="determinism-title"><span class="num">09</span>Deterministic validation</h2>
-          <p>VITALE's MatchEngine is a headless simulation designed to be deterministic: given the same inputs and the same seed, it produces the same result. That property is what makes the simulation testable and balanceable over the long term.</p>
-          <p>We use it as a safety net. Changes that should not affect outcomes can be checked for exactly that, and changes that should affect outcomes can be measured rather than eyeballed. Claude helps write these checks and interpret where results differ.</p>
-        </section>
-
-        <section id="data" aria-labelledby="data-title">
-          <h2 id="data-title"><span class="num">10</span>Data tooling</h2>
-          <p>A football world needs a lot of structured data: player identity and roster data, physical profiles, clubs and competitions. Claude helps build and maintain the pipelines that shape, validate and load that data, and helps write the validation rules that catch inconsistencies before they reach the simulation.</p>
-        </section>
-
-        <section id="multi-agent" aria-labelledby="multi-agent-title">
-          <h2 id="multi-agent-title"><span class="num">11</span>Multi-agent development workflows</h2>
-          <p>For larger objectives, work is split across focused Claude sessions with different jobs — exploring the codebase, implementing a bounded task, running verification, or reviewing someone else's change. Separating roles keeps each context small and means the agent reviewing a change is not the one that wrote it.</p>
-          <p>A human coordinates the work, sets the scope of each task and integrates the results.</p>
-        </section>
-
-        <section id="acceptance" aria-labelledby="acceptance-title">
-          <h2 id="acceptance-title"><span class="num">12</span>Human acceptance</h2>
-          <p>Nothing ships because a model said it was done. Every change ends with a human decision: does this do what the product needs, is the evidence convincing, and does it fit where VITALE is going? Product direction, design taste and final acceptance remain human-owned.</p>
+        <section id="case-study" aria-labelledby="case-study-title">
+          <h2 id="case-study-title"><span class="num">04</span>Evidence from real engineering work</h2>
+          <p>Our development records include source-controlled changes, tests, architecture reviews and reproducible calibration artifacts. These are engineering-stage findings, not claims of a shipped commercial game.</p>
+          <h3>Example: NPC development in a persistent world</h3>
+          <p>Claude-assisted work integrated player development with world-state persistence: NPC training and progression follow saved state rather than static source data. Acceptance included deterministic comparisons of uninterrupted and save/reload/resume simulations, legacy behavior checks, scoped reviews and release builds.</p>
+          <h3>Example: ten-season market calibration</h3>
+          <p>A synthetic 20-club stress test exposed a wage-budget defect that prevented contract renewals. A subsequent market-economy version corrected the initial budget problem, but a longer ten-season run found structural wage deflation and underpaid academy graduates. The change was deliberately <strong>blocked from integration</strong> pending a better pricing rule. That is the purpose of our QA process: catch systemic problems before building new features on top of them.</p>
+          <h3>Example: visual quality gates</h3>
+          <p>Character production uses topology checks, Blender renders, deformation evidence and separate visual review. A technically valid mesh that still looks like a mannequin is a failure, not an approved asset. The character pipeline is being refined; we do not present those prototypes as finished in-game characters.</p>
           <div class="callout">
-            <p>Claude helps a small team approach engineering problems that would conventionally need more engineering capacity. It does not replace engineers, and it does not own the product.</p>
+            <p><strong>Inspectable, not inflated.</strong> Internal branch history, design documents, deterministic test results and QA reports can be made available for an appropriate technical verification process. We do not invent customer numbers, funding, downloads or production readiness.</p>
           </div>
         </section>
 
-        <section id="future" aria-labelledby="future-title">
-          <h2 id="future-title"><span class="num">13</span>Future Claude &amp; API use</h2>
-          <p>Today, Claude Code is used for real internal game design and engineering work. VITALE has not been released, and it does not currently offer player-facing AI or a production Claude API integration. Any planned API use below is exploratory:</p>
-          <div class="mini-grid">
-            <div class="mini"><p class="mini__tag">Exploring</p><h3>Internal engineering automation</h3><p>Routine engineering tasks run as repeatable, reviewable workflows.</p></div>
-            <div class="mini"><p class="mini__tag">Exploring</p><h3>Simulation diagnostics</h3><p>Explaining why a season, match or career unfolded the way it did.</p></div>
-            <div class="mini"><p class="mini__tag">Exploring</p><h3>QA analysis</h3><p>Triage of large test and balancing runs into actionable findings.</p></div>
-            <div class="mini"><p class="mini__tag">Exploring</p><h3>Narrative &amp; content tooling</h3><p>Helping writers produce and maintain career content at scale.</p></div>
-            <div class="mini"><p class="mini__tag">Exploring</p><h3>Localization workflows</h3><p>Supporting translation and consistency checks across languages.</p></div>
-            <div class="mini"><p class="mini__tag">Exploring</p><h3>Developer intelligence</h3><p>Summarising large diagnostic outputs into what actually needs attention.</p></div>
-          </div>
-          <p>Any player-facing use would be designed, reviewed and accepted under the same human-controlled process described above.</p>
+        <section id="creative" aria-labelledby="creative-title">
+          <h2 id="creative-title"><span class="num">05</span>Claude also contributes to the game's design</h2>
+          <p>The design work is not an afterthought to code. Claude helps develop character direction, the emotional rhythm of a football career, interactive event structures, interface requirements, 3D asset specifications and technical production plans. We use these specifications to move from a gameplay idea toward something that can be implemented and verified.</p>
+          <p>The human developer remains the final creative authority. We revise or reject output when its anatomy, visual language, animation or player experience is not good enough. Current public pages intentionally avoid presenting illustrative concepts as screenshots of a playable game.</p>
         </section>
 
-        <section class="cs-related" aria-labelledby="cs-contact-title">
-          <h2 id="cs-contact-title">Talk to us</h2>
-          <p>Pokekara Studio is a founder-led development initiative in Ukraine, not a separately incorporated company. <a href="../studio/">Meet developer Anatolii Ushakov and see the current project status</a>.</p>
-          <p>Questions about how we work, partnerships or investment: <a href="mailto:anatolii@pokekara.online">anatolii@pokekara.online</a>. Everything else: <a href="mailto:hello@pokekara.online">hello@pokekara.online</a>.</p>
-          <div class="btn-row">
-            <a class="btn btn--primary" href="../#experience">Explore VITALE <span aria-hidden="true">→</span></a>
-            <a class="btn btn--ghost" href="../#contact">Contact Pokekara Studio</a>
+        <section id="delivery" aria-labelledby="delivery-title">
+          <h2 id="delivery-title"><span class="num">06</span>How a change reaches acceptance</h2>
+          <ol class="flowline" role="list" aria-label="Claude-led development workflow">
+            <li class="is-human">Product decision</li>
+            <li>Design &amp; architecture</li>
+            <li>Scoped implementation</li>
+            <li>Automated tests</li>
+            <li>Independent Claude review</li>
+            <li class="is-human">Founder acceptance</li>
+          </ol>
+          <p>Claude sessions work from explicit boundaries: which systems may change, what must stay deterministic, which save versions must remain readable and which regressions are unacceptable. Reviewers inspect the actual diff and evidence rather than trusting the implementation's own status message.</p>
+          <div class="split-table">
+            <div class="split-table__human"><h3>Anatolii decides</h3><ul><li>Gameplay goals and design priorities</li><li>Economic and career-policy choices</li><li>Visual direction and product taste</li><li>Final acceptance, scope and release readiness</li></ul></div>
+            <div class="split-table__claude"><h3>Claude develops with us</h3><ul><li>Game-system proposals and architecture</li><li>C# implementation and refactoring</li><li>Test harnesses, deterministic comparisons</li><li>Debugging, reviews and documentation</li><li>Creative specifications and production tooling</li></ul></div>
           </div>
+        </section>
+
+        <section id="status" aria-labelledby="status-title">
+          <h2 id="status-title"><span class="num">07</span>What's implemented — and what's still being built</h2>
+          <p>VITALE is in <strong>active pre-release development</strong>. Its simulation foundations are substantial, with persistent player/world state and deterministic test infrastructure. These are engineering achievements, not proof of a finished iOS or Android build.</p>
+          <p>Market repricing, Life/Fanbase calibration, some career integration cases, the Unity client and production-quality 3D character art remain development or acceptance work. We do not claim a public release, store listing, user base, revenue or completed client where none exists.</p>
+        </section>
+
+        <section id="next" aria-labelledby="next-title">
+          <h2 id="next-title"><span class="num">08</span>Why Claude matters as we grow</h2>
+          <p>Pokekara Studio is bootstrapped and founder-led in Ukraine. Claude Code is an essential part of our daily creative and engineering capacity: decomposing work, implementing features, checking long-term behavior and helping a small operation maintain the discipline of a larger development team.</p>
+          <p>We currently use Claude in internal development, <strong>not as a production player-facing AI feature</strong>. Potential future Claude API use — for engineering diagnostics, content production, localization and quality assurance — remains exploratory rather than an already deployed integration.</p>
+          <p>Our goal is to turn this verified technical foundation into a commercially viable, original football career game for iOS and Android, without cutting corners on rights, simulation integrity or creative quality.</p>
+        </section>
+
+        <section class="cs-related" aria-labelledby="contact-title">
+          <h2 id="contact-title">Explore or verify the project</h2>
+          <p>Pokekara Studio is led by <strong>Anatolii Ushakov</strong> in Ukraine and is not currently a separately incorporated company. Read the <a href="../studio/">studio profile and current development status</a>.</p>
+          <p>Development, partnership and startup-program inquiries: <a href="mailto:anatolii@pokekara.online">anatolii@pokekara.online</a>. General inquiries: <a href="mailto:hello@pokekara.online">hello@pokekara.online</a>.</p>
+          <div class="btn-row"><a class="btn btn--primary" href="../#technology">Explore the technology <span aria-hidden="true">→</span></a><a class="btn btn--ghost" href="../studio/">Meet the developer</a></div>
         </section>
       </article>
     </div>

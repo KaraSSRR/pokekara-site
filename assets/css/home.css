@@ -76,7 +76,8 @@
 
 .hero__inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 1120px;
   align-items: center;
   gap: clamp(2rem, 1rem + 4vw, 4rem);
 }
@@ -84,6 +85,8 @@
 .hero__copy {
   display: grid;
   gap: var(--space-5);
+  max-width: 1000px;
+  padding-block: clamp(1rem, 2vw, 2.5rem);
 }
 
 .hero__eyebrow {
@@ -1490,7 +1493,7 @@
    ========================================================= */
 .experience__grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(2.5rem, 1rem + 5vw, 6rem);
   align-items: center;
 }
@@ -1503,6 +1506,7 @@
 .experience__copy header {
   display: grid;
   gap: var(--space-4);
+  max-width: 850px;
 }
 
 .experience__visual {
@@ -1510,83 +1514,9 @@
   place-items: center;
 }
 
-.thumb-phone {
-  position: relative;
-  width: min(100%, 270px);
-  aspect-ratio: 9 / 19;
-  border-radius: 40px;
-  border: 2px solid var(--c-line-strong);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 40%),
-    var(--c-bg-raised);
-  overflow: hidden;
-}
-
-.thumb-phone::before {
-  content: "";
-  position: absolute;
-  inset: 8% 10% auto;
-  height: 22%;
-  border-radius: 14px;
-  background:
-    linear-gradient(var(--c-surface-3), var(--c-surface-3)) 0 0 / 40% 10px no-repeat,
-    linear-gradient(var(--c-surface-2), var(--c-surface-2)) 0 22px / 100% 46% no-repeat,
-    linear-gradient(var(--c-surface-2), var(--c-surface-2)) 0 100% / 30% 22% no-repeat,
-    linear-gradient(var(--c-surface-2), var(--c-surface-2)) 50% 100% / 30% 22% no-repeat,
-    linear-gradient(var(--c-surface-2), var(--c-surface-2)) 100% 100% / 30% 22% no-repeat;
-  opacity: 0.7;
-}
-
-.thumb-phone__zone {
-  position: absolute;
-  inset: auto -30% -10% -10%;
-  height: 70%;
-  background: radial-gradient(60% 60% at 75% 100%, rgba(63, 209, 191, 0.45), rgba(63, 209, 191, 0.12) 55%, transparent 75%);
-}
-
-.thumb-phone__lbl {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: max-content;
-  max-width: 86%;
-  padding: 0.35rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid var(--c-line-strong);
-  background: rgba(7, 9, 12, 0.85);
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  text-align: center;
-  color: var(--c-text-2);
-}
-
-.thumb-phone__lbl--top { top: 14%; }
-.thumb-phone__lbl--mid { top: 52%; border-color: rgba(63, 209, 191, 0.5); color: var(--c-teal); }
-.thumb-phone__lbl--bot { bottom: 15%; border-color: rgba(63, 209, 191, 0.5); color: var(--c-teal); }
-
-.thumb-phone__bar {
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  bottom: 5%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.thumb-phone__bar i {
-  width: 20px;
-  height: 20px;
-  border-radius: 7px;
-  background: var(--c-surface-3);
-}
-
-.thumb-phone__bar i:first-child {
-  background: var(--c-accent);
-}
-
 .tabs-explained {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0 var(--space-6);
   margin: 0;
 }
@@ -2452,8 +2382,3 @@
     font-size: 0.8125rem;
   }
 }
-
-/* Original concept artwork displays */
-.concept-showcase .concept-screen, .concept-experience .concept-screen {width:100%;max-width:370px;margin:0 auto;overflow:hidden;border:1px solid rgba(200,220,245,.25);border-radius:26px;background:#071119;box-shadow:0 40px 95px -30px rgba(0,0,0,.9)}
-.concept-showcase .concept-screen img, .concept-experience .concept-screen img {display:block;width:100%;height:auto}
-.concept-experience{margin:0;display:grid;gap:1rem;justify-items:center}.concept-experience__caption{font-size:var(--fs-sm);color:var(--c-text-3);text-align:center}
